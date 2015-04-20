@@ -1,4 +1,4 @@
-# flydb
+# flydb for node.js
 the fastest slowest database there is. 
 + fastest in terms of easiest to use, there is literally no new API
 + slowest in terms of performance, this db is extremely slow
