@@ -18,6 +18,13 @@ You **shouldn't** use flydb because
 + flydb is not scalable at all
 + flydb is extremely slow (but really for minor projects, you won't notice a difference)
 
+## !IMPORTANT
+In order to run this you will need to activate --harmony-proxies, luckily you dont need to install anything on top of node
+
+````
+node --harmony-proxies <your commands>
+````
+
 ##Install
 
 ````
