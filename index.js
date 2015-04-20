@@ -1,6 +1,7 @@
 var fs = require('fs');
 var http = require('http');
 
+const DIRECTORY = './flydata/data.fdb';
 
 var flydb = {
 	start: startdb,
@@ -23,7 +24,14 @@ var keywords = Object.keys(flydb);
  * Starts the db synchronously since boot performance is not important
  */
 function startdb(){
-	var data = fs.readFileSync('./data.fdb').toString();
+	try{
+		var data = fs.readFileSync(DIRECTORY).toString();
+	} catch (err) {
+		var data = {};
+		fs.mkdirSync('./flydata/');
+		fs.writeFileSync(DIRECTORY, "{}")
+	}
+	
 	flydb._data = _parseString(data);
 	return flydb.data;
 }
@@ -85,12 +93,9 @@ function _requestProxy(){
  * Saves data in db;
  */
 function _save(){
-	fs.writeFileSync('./data.fdb', _stringify(flydb.data));
+	fs.writeFileSync(DIRECTORY, _stringify(flydb.data));
 }
 
 module.exports = flydb.start();
-
-flydb.data.asd = 'asdasd'
-flydb.data.as = {}
 
 
